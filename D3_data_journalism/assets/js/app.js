@@ -157,6 +157,21 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
         .classed('poverty text', true)
         .text('In Poverty (%)');
 
+    //Set the Initial Axes Colors
+    //Change the Text Color of the Other Axes
+    incomeAxis.transition()
+        .style('fill', d3.color('black'));
+    povertyAxis.transition()
+        .style('fill', d3.color('gray'));
+    ageAxis.transition()
+        .style('fill', d3.color('gray'));
+    healthcareAxis.transition()
+        .style('fill', d3.color('black'));
+    smokeAxis.transition()
+        .style('fill', d3.color('gray'));
+    obesityAxis.transition()
+        .style('fill', d3.color('gray'));
+
     //Perform Updates to the x & y-coordinates of the Circles Based on the Axes Selected
     incomeAxis.on("click", function() {
         //Append Group and Call Axis
@@ -173,6 +188,14 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
             .selectAll('text')
             .transition()
             .attr('x', d => incomeScale(d.income)-5);
+        
+        //Change the Text Color of the Other Axes
+        incomeAxis.transition()
+            .style('fill', d3.color('black'));
+        povertyAxis.transition()
+            .style('fill', d3.color('gray'));
+        ageAxis.transition()
+            .style('fill', d3.color('gray'));
     });
     povertyAxis.on("click", function() {
         var xAxis_2 = d3.axisBottom(povertyScale);
@@ -190,6 +213,14 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
             .selectAll('text')
             .transition()
             .attr('x', d => povertyScale(d.poverty)-5);
+
+        //Change the Text Color of the Other Axes
+        incomeAxis.transition()
+            .style('fill', d3.color('gray'));
+        povertyAxis.transition()
+            .style('fill', d3.color('black'));
+        ageAxis.transition()
+            .style('fill', d3.color('gray'));
     });
     ageAxis.on("click", function() {
         var xAxis_3 = d3.axisBottom(ageScale);
@@ -207,6 +238,14 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
             .selectAll('text')
             .transition()
             .attr('x', d => ageScale(d.age)-5);
+
+        //Change the Text Color of the Axes
+        incomeAxis.transition()
+            .style('fill', d3.color('gray'));
+        povertyAxis.transition()
+            .style('fill', d3.color('gray'));
+        ageAxis.transition()
+            .style('fill', d3.color('black'));
     });
     healthcareAxis.on("click", function() {
         //Append Group and Call Axis
@@ -223,6 +262,14 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
             .selectAll('text')
             .transition()
             .attr('y', d => healthcareScale(d.healthcare));
+
+        //Change the Text Color of the Other Axes
+        healthcareAxis.transition()
+            .style('fill', d3.color('black'));
+        smokeAxis.transition()
+            .style('fill', d3.color('gray'));
+        obesityAxis.transition()
+            .style('fill', d3.color('gray'));
     });
     smokeAxis.on("click", function() {
         var yAxis_2 = d3.axisLeft(smokeScale);
@@ -240,6 +287,14 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
             .selectAll('text')
             .transition()
             .attr('y', d => smokeScale(d.smokes));
+
+        //Change the Text Color of the Other Axes
+        healthcareAxis.transition()
+            .style('fill', d3.color('gray'));
+        smokeAxis.transition()
+            .style('fill', d3.color('black'));
+        obesityAxis.transition()
+            .style('fill', d3.color('gray'));
     });
     obesityAxis.on("click", function() {
         var yAxis_3 = d3.axisLeft(obeseScale);
@@ -257,73 +312,15 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
             .selectAll('text')
             .transition()
             .attr('y', d => obeseScale(d.obesity));
-    });
-    ;
 
-    ////Call Function to Handle Clicking on Axes
-    //d3.on("click", updateAxis());
-    ////Create Function to Handle Clicking on Axes
-    //function updateAxis() {
-        //var xAxis_2 = d3.axisBottom(povertyScale);
-        //var yAxis_2 = d3.axisLeft(smokeScale);
-        //var xAxis_3 = d3.axisBottom(ageScale);
-        //var yAxis_3 = d3.axisLeft(obeseScale);
-        //console.log(xAxis_2);
-        //console.log(yAxis_2);
-        //console.log(xAxis_3);
-        //console.log(yAxis_3);
-//
-        //// Use D3 to select the dropdown menu
-        //var dataset = d3.select("#scatter").property("text");
-//        
-        ////Update the x Values When Clicking the xAxis
-        //if (dataset === 'Household Income (Median)') {
-            ////Remove the 'cx' Attribute
-            //d3.selectAll('cx').remove();
-            ////Append Group and Call Axis
-            //chartGroup.append('g')
-                //.classed('axis', true)
-                //.attr('transform', `translate(0, ${chartHeight})`)
-                //.call(xAxis_1);
-//
-            ////Append the Dots to the Chart Group
-            //chartGroup.selectAll('dot')
-                //.data(wellness)
-                //.enter()
-                //.append('circle')
-                //.attr('cx', d => incomeScale(d.income))
-                //.attr('r', 10)
-                //.style('fill', 'green');
-//
-            ////Append State Abbreviations Text to the Graph
-            //chartGroup.selectAll('text')
-                //.data(wellness)
-                //.enter()
-                //.append('text')
-                //.text(d => d.abbr)
-                //.attr('x', d => incomeScale(d.income)-5)
-                //.attr('y', d => healthcareScale(d.healthcare))
-                //.attr('fill', 'white')
-                //.attr('font-size', "7px");
-            //};
-//        
-//
-        ////chartGroup.append('g')
-            ////.classed('axis', true)
-            ////.call(yAxis_2);
-        ////chartGroup.append('g')
-            ////.classed('axis', true)
-            ////.attr('transform', `translate(0, ${chartHeight})`)
-            ////.call(xAxis_2);
-        ////chartGroup.append('g')
-            ////.classed('axis', true)
-            ////.call(yAxis_3);
-        ////chartGroup.append('g')
-            ////.classed('axis', true)
-            ////.attr('transform', `translate(0, ${chartHeight})`)
-            ////.call(xAxis_3);
-    //};
-    updateAxis();
+        //Change the Text Color of the Other Axes
+        healthcareAxis.transition()
+            .style('fill', d3.color('gray'));
+        smokeAxis.transition()
+            .style('fill', d3.color('gray'));
+        obesityAxis.transition()
+            .style('fill', d3.color('black'));
+    });
 }).catch(function(error) {
     console.log(error);
   });
