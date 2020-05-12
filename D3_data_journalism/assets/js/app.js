@@ -114,7 +114,7 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
     //and https://www.dashingd3js.com/svg-text-element
     var dots = chartGroup.append('g')
         .attr('id', 'dots');
-    dots.append('g')
+    var dots1 =dots.append('g')
         .selectAll('dot')
         .data(wellness)
         .enter()
@@ -180,6 +180,8 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
     obesityAxis.transition()
         .style('fill', d3.color('red'));
 
+    //Bonus
+    //Adjusting Axes & Dot Positions
     //Perform Updates to the x & y-coordinates of the Circles Based on the Axes Selected
     incomeAxis.on("click", function() {
         //Append Group and Call Axis
@@ -329,6 +331,25 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
         obesityAxis.transition()
             .style('fill', d3.color('white'));
     });
+
+
+    //ToolTips
+    //Add ToolTips Element to Body
+    var toolTip = d3.select("body").append("div")
+        .attr("class", "tooltip");
+
+    //Add ToolTips to Circles
+    d3.select('#dots').select('g').selectAll('circle').on("mouseover", function(d, i) {
+        toolTip.style("display", "block").style("background-color", d3.color("purple"));
+        toolTip.html(`<strong>${wellness[i].state}</strong><br><hr><br>Poverty: ${wellness[i].poverty}<br>Obesity: ${wellness[i].obesity}`)
+            .style('fill', d3.color('white'))
+            .style('left', "50px")
+            .style('top', "50px")
+    })
+    // Make the ToolTips
+    .on("mouseout", function() {
+        toolTip.style("display", "none");
+      });
 }).catch(function(error) {
     console.log(error);
   });
