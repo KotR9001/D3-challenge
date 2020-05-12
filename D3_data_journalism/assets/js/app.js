@@ -101,6 +101,14 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
         .attr('id', 'xAxis')
         .call(xAxis_1);
 
+    //Set the Axes Colors
+    chartGroup.selectAll('.tick')
+        .select('text')
+        .attr('fill', d3.color('white'));
+    chartGroup.select('.tick')
+        .select('text')
+        .attr('fill', d3.color('white'));
+
     //Append the Dots to the Chart Group
     //Found Methods at https://www.d3-graph-gallery.com/graph/scatter_basic.html
     //and https://www.dashingd3js.com/svg-text-element
@@ -160,17 +168,17 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
     //Set the Initial Axes Colors
     //Change the Text Color of the Other Axes
     incomeAxis.transition()
-        .style('fill', d3.color('black'));
+        .style('fill', d3.color('white'));
     povertyAxis.transition()
-        .style('fill', d3.color('gray'));
+        .style('fill', d3.color('red'));
     ageAxis.transition()
-        .style('fill', d3.color('gray'));
+        .style('fill', d3.color('red'));
     healthcareAxis.transition()
-        .style('fill', d3.color('black'));
+        .style('fill', d3.color('white'));
     smokeAxis.transition()
-        .style('fill', d3.color('gray'));
+        .style('fill', d3.color('red'));
     obesityAxis.transition()
-        .style('fill', d3.color('gray'));
+        .style('fill', d3.color('red'));
 
     //Perform Updates to the x & y-coordinates of the Circles Based on the Axes Selected
     incomeAxis.on("click", function() {
@@ -191,11 +199,11 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
         
         //Change the Text Color of the Other Axes
         incomeAxis.transition()
-            .style('fill', d3.color('black'));
+            .style('fill', d3.color('white'));
         povertyAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         ageAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
     });
     povertyAxis.on("click", function() {
         var xAxis_2 = d3.axisBottom(povertyScale);
@@ -216,11 +224,11 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
 
         //Change the Text Color of the Other Axes
         incomeAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         povertyAxis.transition()
-            .style('fill', d3.color('black'));
+            .style('fill', d3.color('white'));
         ageAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
     });
     ageAxis.on("click", function() {
         var xAxis_3 = d3.axisBottom(ageScale);
@@ -241,11 +249,11 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
 
         //Change the Text Color of the Axes
         incomeAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         povertyAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         ageAxis.transition()
-            .style('fill', d3.color('black'));
+            .style('fill', d3.color('white'));
     });
     healthcareAxis.on("click", function() {
         //Append Group and Call Axis
@@ -265,11 +273,11 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
 
         //Change the Text Color of the Other Axes
         healthcareAxis.transition()
-            .style('fill', d3.color('black'));
+            .style('fill', d3.color('white'));
         smokeAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         obesityAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
     });
     smokeAxis.on("click", function() {
         var yAxis_2 = d3.axisLeft(smokeScale);
@@ -290,11 +298,11 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
 
         //Change the Text Color of the Other Axes
         healthcareAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         smokeAxis.transition()
-            .style('fill', d3.color('black'));
+            .style('fill', d3.color('white'));
         obesityAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
     });
     obesityAxis.on("click", function() {
         var yAxis_3 = d3.axisLeft(obeseScale);
@@ -315,11 +323,11 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
 
         //Change the Text Color of the Other Axes
         healthcareAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         smokeAxis.transition()
-            .style('fill', d3.color('gray'));
+            .style('fill', d3.color('red'));
         obesityAxis.transition()
-            .style('fill', d3.color('black'));
+            .style('fill', d3.color('white'));
     });
 }).catch(function(error) {
     console.log(error);
