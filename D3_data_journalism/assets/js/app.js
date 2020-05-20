@@ -339,7 +339,7 @@ d3.csv('./assets/data/data.csv').then(function(wellness) {
         .attr("class", "tooltip");
 
     //Add ToolTips to Circles
-    d3.select('#dots').select('g').selectAll('circle').on("mouseover", function(d, i) {
+    dots.select('g').selectAll('circle').on("mouseover", function(d, i) {
         toolTip.style("display", "block").style("background-color", d3.color("purple"));
         toolTip.html(`<strong>${wellness[i].state}</strong><br><hr><br>Poverty: ${wellness[i].poverty}<br>Obesity: ${wellness[i].obesity}`)
             .style('fill', d3.color('white'))
