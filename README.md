@@ -1,7 +1,10 @@
 # D3-challenge
 Data Journalism<br />
+Link: https://kotr9001.github.io/D3-challenge/D3_data_journalism/index.html
+<br />
 Carried out an assignment to investigate the relationships between health and financial variables. Utilized D3 to allow transitions
 with respect to dot positions on a scatter plot based on user selections.<br />
+<br />
 -First, defined SVG and chart dimensions.<br />
 ![image](https://github.com/KotR9001/D3-challenge/assets/57807780/fb5a7838-9323-4c6d-b191-1156fc0e4a07)<br />
 -Next, created a SVG element as well as a chart group inside of it.<br />
@@ -22,6 +25,7 @@ was to be plotted at any time).<br />
 ![image](https://github.com/KotR9001/D3-challenge/assets/57807780/8c163c04-9082-451c-bee1-b6669d3ae6e9)<br />
 -Finally, set the initial axis colors to differentiate the axes that were selected vs those that weren't.<br />
 ![image](https://github.com/KotR9001/D3-challenge/assets/57807780/2e805f9a-6d64-4589-9a10-d46ae84d0608)<br />
+<br />
 -As a bonus, utlized transitions on axis click to allow users to select the XY axis pairs they wanted such that the circle positions
 would adjust to reflect the data.<br />
 ![image](https://github.com/KotR9001/D3-challenge/assets/57807780/abd7605d-2ab6-44ef-833c-a17e212f826a)<br />
